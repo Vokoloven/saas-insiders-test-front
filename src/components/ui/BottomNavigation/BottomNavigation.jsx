@@ -1,13 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import { HeartHandShakeIcon } from '../../../assets/HeartHandShakeIcon';
 import { Link } from 'react-router-dom';
+import { usePath } from '../../../hooks';
 
 export const CustomBottomNavigation = () => {
-  const [value, setValue] = useState(0);
+  const path = usePath();
+  const [value, setValue] = useState(() => {
+    if (path === '/') {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
+
+  useEffect(() => {
+    if (path === '/') {
+      setValue(0);
+    } else {
+      setValue(1);
+    }
+  }, [path]);
 
   return (
     <Box
@@ -28,19 +44,30 @@ export const CustomBottomNavigation = () => {
         }}
         showLabels
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
       >
         <BottomNavigationAction
           label="Agile"
           icon={<HomeIcon />}
           component={Link}
           to={'/'}
+          sx={{
+            ...(path === '/'
+              ? { color: 'buttons.active' }
+              : { color: 'buttons.default' }),
+          }}
         />
         <BottomNavigationAction
           label="AI Agile Coach"
-          icon={<HeartHandShakeIcon />}
+          icon={
+            <HeartHandShakeIcon
+              sx={(theme) => ({
+                stroke: theme.palette.buttons.default,
+                ...(path === 'chat' && {
+                  stroke: theme.palette.buttons.active,
+                }),
+              })}
+            />
+          }
           component={Link}
           to={'chat'}
         />

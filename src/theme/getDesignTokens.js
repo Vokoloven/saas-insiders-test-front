@@ -4,7 +4,10 @@ export const getDesignTokens = () => ({
       input: '#686868',
       placeholder: '#ACADAD',
     },
-    buttons: {},
+    buttons: {
+      default: '#000A10',
+      active: '#1976d2',
+    },
     background: {
       default: '#D8E1ED',
       paper: '#F9F9F9',

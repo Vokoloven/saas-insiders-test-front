@@ -4,7 +4,7 @@ export const usePath = () => {
   const location = useLocation();
   const { pathname } = location;
 
-  const replacedPath = pathname.replace(/[/]+/, (path) => {
+  const replacedPath = pathname.replace(/[/]/, (path) => {
     if (pathname === '/') {
       return path;
     }

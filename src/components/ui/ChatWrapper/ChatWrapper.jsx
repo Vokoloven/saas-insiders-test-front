@@ -1,7 +1,10 @@
 import { Paper, Box, Container } from '@mui/material';
+import { usePath } from '../../../hooks';
 
 // eslint-disable-next-line react/prop-types
 export const ChatWrapper = ({ children }) => {
+  const path = usePath();
+
   return (
     <Box
       sx={(theme) => ({
@@ -21,7 +24,7 @@ export const ChatWrapper = ({ children }) => {
           borderTopLeftRadius: '40px',
           boxShadow: '0px 2px 20px 0px rgba(0, 0, 0, 0.06)',
           display: 'flex',
-          flexDirection: 'column-reverse',
+          ...(path === 'chat' && { flexDirection: 'column-reverse' }),
           [theme.breakpoints.up('tablet')]: {
             borderBottomLeftRadius: '40px',
             height: '940px',
