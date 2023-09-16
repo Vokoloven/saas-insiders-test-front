@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 
 export const Sidebar = () => {
   return (
-    <Box sx={{ pr: '22px' }}>
+    <Box
+      sx={(theme) => ({
+        pr: '22px',
+        [theme.breakpoints.down('tablet')]: {
+          display: 'none',
+        },
+      })}
+    >
       <Box
         sx={{
           width: '180px',

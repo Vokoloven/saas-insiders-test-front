@@ -9,6 +9,7 @@ export const SendIcon = (props) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        fill="none" // This removes the background color
       />
       <path
         d="M29.3332 2.66675L19.9998 29.3334L14.6665 17.3334L2.6665 12.0001L29.3332 2.66675Z"
@@ -16,6 +17,7 @@ export const SendIcon = (props) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        fill="none" // This removes the background color
       />
     </SvgIcon>
   );
