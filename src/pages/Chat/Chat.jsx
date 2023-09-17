@@ -5,15 +5,17 @@ import { useChatConversations } from '../../hooks';
 import { useSelector } from 'react-redux';
 import { selectChat } from '../../redux/selectors/selectChat';
 
-export const Chat = () => {
+const Chat = () => {
   useChatConversations();
   const { chatConversations } = useSelector(selectChat);
 
   return (
-    <ChatWrapper>
+     <ChatWrapper>
       <Box>
         <Message messages={chatConversations} />
       </Box>
     </ChatWrapper>
   );
 };
+
+export default Chat
