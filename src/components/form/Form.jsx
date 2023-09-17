@@ -1,10 +1,22 @@
 import { Box, FormControl, IconButton } from '@mui/material';
 import { SendIcon } from '../../assets/SendIcon';
 import { Input } from './Input';
+import { usePath } from '../../hooks';
 
 export const Form = () => {
+  const path = usePath();
+
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        pb: '60px',
+        pt: '36px',
+        px: '40px',
+        ...(path !== 'chat' && { display: 'none' }),
+      }}
+    >
       <FormControl
         onSubmit={(e) => {
           e.preventDefault();

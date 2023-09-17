@@ -1,5 +1,6 @@
 import { Paper, Box, Container } from '@mui/material';
 import { usePath } from '../../../hooks';
+import { Form } from '../../form';
 
 // eslint-disable-next-line react/prop-types
 export const ChatWrapper = ({ children }) => {
@@ -31,14 +32,19 @@ export const ChatWrapper = ({ children }) => {
           },
         })}
       >
+        <Form />
         <Container
           sx={{
             maxWidth: '1200px',
-            // display: 'flex',
-            // justifyContent: 'center',
             px: '40px',
             pb: '40px',
+            pt: '40px',
             zIndex: 1,
+            overflowY: 'auto',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            msOverflowStyle: 'none',
           }}
         >
           {children}
