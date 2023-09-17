@@ -5,6 +5,14 @@
 ## Projects
 
 For building project used **[ReactJs](https://vitejs.dev/)**\
+
+## Installation on your PC
+```
+1. git clone https://github.com/Vokoloven/saas-insiders-test-back.git
+2. npm install
+```
+
+
 Some basic **Project** commands are:
 
 | Command           | Description                      |
