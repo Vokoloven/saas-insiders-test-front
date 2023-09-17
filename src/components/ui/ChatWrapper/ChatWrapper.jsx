@@ -34,10 +34,11 @@ export const ChatWrapper = ({ children }) => {
         <Container
           sx={{
             maxWidth: '1200px',
-            display: 'flex',
-            justifyContent: 'center',
+            // display: 'flex',
+            // justifyContent: 'center',
             px: '40px',
             pb: '40px',
+            zIndex: 1,
           }}
         >
           {children}

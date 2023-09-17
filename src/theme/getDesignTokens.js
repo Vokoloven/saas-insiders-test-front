@@ -12,6 +12,8 @@ export const getDesignTokens = () => ({
       default: '#D8E1ED',
       paper: '#F9F9F9',
       white: '#FFFFFF',
+      msgUser: '#C4DDFF',
+      msgAssist: '#FEE2C5',
     },
     border: {
       main: '#ACADAD',
