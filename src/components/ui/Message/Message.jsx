@@ -1,18 +1,28 @@
-import { Box } from '@mui/material/';
+/* eslint-disable react/prop-types */
+import { Box, Typography } from '@mui/material/';
 import React from 'react';
 
-export const Message = () => {
+export const Message = ({ messages }) => {
   return (
     <Box>
-      {[1, 2, 3, 4, 5].map((item) => (
-        <React.Fragment key={item}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+      {messages?.map(({ id, content, role }) => (
+        <React.Fragment key={id}>
+          <Box
+            sx={{
+              display: 'flex',
+              ...(role === 'user'
+                ? { justifyContent: 'flex-start' }
+                : { justifyContent: 'flex-end' }),
+            }}
+          >
             <Box
               sx={{
                 position: 'relative',
                 py: '25px',
                 px: '43px',
-                bgcolor: 'background.msgUser',
+                ...(role === 'user'
+                  ? { bgcolor: 'background.msgUser' }
+                  : { bgcolor: 'background.msgAssist' }),
                 borderRadius: '40px',
                 mb: '20px',
                 maxWidth: '704px',
@@ -24,9 +34,10 @@ export const Message = () => {
                   width: '40px',
                   height: '40px',
                   zIndex: -1,
-                  backgroundColor: 'background.msgUser',
+                  ...(role === 'user'
+                    ? { bgcolor: 'background.msgUser', left: '-20px' }
+                    : { bgcolor: 'background.msgAssist', right: '-20px' }),
                   bottom: '0',
-                  left: '-20px',
                 },
                 '&::after': {
                   content: '""',
@@ -35,57 +46,16 @@ export const Message = () => {
                   width: '40px',
                   height: '40px',
                   zIndex: -1,
-                  backgroundColor: 'background.paper',
+                  bgcolor: 'background.paper',
                   bottom: '7px',
-                  left: '-36px',
+                  ...(role === 'user' ? { left: '-36px' } : { right: '-36px' }),
                 },
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Blanditiis neque, provident error sit fuga quidem perspiciatis.
-              Nisi adipisci maiores alias illum, nam fugit, perspiciatis
-              tenetur, recusandae dolorem porro quibusdam necessitatibus!
-            </Box>
-          </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Box
-              sx={{
-                position: 'relative',
-                py: '25px',
-                px: '43px',
-                bgcolor: 'background.msgAssist',
-                borderRadius: '40px',
-                mb: '20px',
-                maxWidth: '704px',
-
-                '&::before': {
-                  content: '""',
-                  borderRadius: '100%',
-                  position: 'absolute',
-                  width: '40px',
-                  height: '40px',
-                  zIndex: -1,
-                  backgroundColor: 'background.msgAssist',
-                  bottom: '0',
-                  right: '-20px',
-                },
-                '&::after': {
-                  content: '""',
-                  borderRadius: '100%',
-                  position: 'absolute',
-                  width: '40px',
-                  height: '40px',
-                  zIndex: -1,
-                  backgroundColor: 'background.paper',
-                  bottom: '7px',
-                  right: '-36px',
-                },
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Blanditiis neque, provident error sit fuga quidem perspiciatis.
-              Nisi adipisci maiores alias illum, nam fugit, perspiciatis
-              tenetur, recusandae dolorem porro quibusdam necessitatibus!
+              <Typography component={'p'} variant={'button'}>
+                {role}
+              </Typography>
+              {content}
             </Box>
           </Box>
         </React.Fragment>

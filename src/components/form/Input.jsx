@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { OutlinedInput } from '@mui/material';
 
-export const Input = () => {
+export const Input = ({ value }) => {
   return (
     <OutlinedInput
+      value={value}
       id="outlined-adornment-weight"
       aria-describedby="outlined-weight-helper-text"
       inputProps={{

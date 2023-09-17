@@ -2,9 +2,27 @@ import { Box, FormControl, IconButton } from '@mui/material';
 import { SendIcon } from '../../assets/SendIcon';
 import { Input } from './Input';
 import { usePath } from '../../hooks';
+import { io } from 'socket.io-client';
+import { useState } from 'react';
+import { handleSubmitNewMessage } from './formHandlers';
+
+const socket = io('http://localhost:3333', { transports: ['websocket'] });
 
 export const Form = () => {
   const path = usePath();
+  const [message, setMessage] = useState('');
+
+  socket.on('connect', () => {
+    console.log('Connected to WebSocket server');
+  });
+
+  socket.on('aiResponse', (response) => {
+    console.log('Received AI response:', response);
+  });
+
+  const handleChange = (e) => {
+    setMessage(e.target.value);
+  };
 
   return (
     <Box
@@ -18,9 +36,13 @@ export const Form = () => {
       }}
     >
       <FormControl
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
+        onSubmit={handleSubmitNewMessage.bind(
+          null,
+          socket,
+          message,
+          setMessage,
+        )}
+        onChange={handleChange}
         sx={(theme) => ({
           flexDirection: 'row',
           alignItems: 'center',
@@ -32,7 +54,7 @@ export const Form = () => {
         variant="outlined"
         component={'form'}
       >
-        <Input />
+        <Input value={message} />
         <Box sx={{ ml: '24px' }}>
           <IconButton type="submit">
             <SendIcon />
