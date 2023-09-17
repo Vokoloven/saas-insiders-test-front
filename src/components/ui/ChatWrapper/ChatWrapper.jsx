@@ -1,10 +1,19 @@
+/* eslint-disable react/prop-types */
+import { useEffect, useRef } from 'react';
 import { Paper, Box, Container } from '@mui/material';
 import { usePath } from '../../../hooks';
 import { Form } from '../../form';
 
-// eslint-disable-next-line react/prop-types
 export const ChatWrapper = ({ children }) => {
   const path = usePath();
+  const chatContainerRef = useRef(null);
+
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  }, [children]);
 
   return (
     <Box
@@ -34,6 +43,7 @@ export const ChatWrapper = ({ children }) => {
       >
         <Form />
         <Container
+          ref={chatContainerRef}
           sx={{
             maxWidth: '1200px',
             px: '40px',

@@ -10,14 +10,18 @@ const initialState = {
 export const chatSlice = createSlice({
   name: 'chat',
   initialState,
-  reducers: {},
+  reducers: {
+    addToChatConversations: (state, { payload }) => {
+      state.chatConversations = [...state.chatConversations, payload];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchChatConversations.pending, (state) => {
       state.error = '';
       state.loading = 'pending';
     });
     builder.addCase(fetchChatConversations.fulfilled, (state, { payload }) => {
-      state.chatConversations = [...state.chatConversations, payload];
+      state.chatConversations = payload;
       state.loading = 'succeeded';
     });
     builder.addCase(fetchChatConversations.rejected, (state, { payload }) => {
@@ -26,3 +30,5 @@ export const chatSlice = createSlice({
     });
   },
 });
+
+export const { addToChatConversations } = chatSlice.actions;
