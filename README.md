@@ -1,8 +1,24 @@
-# React + Vite
+# Hi there!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**_About_**: It's test application.
 
-Currently, two official plugins are available:
+## Projects
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+For building project used **[ReactJs](https://vitejs.dev/)**\
+Some basic **Project** commands are:
+
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm install `    | Will installed dependencies      |
+| `npm run dev`     | Start dev server                 |
+| `npm run preview` | Locally preview production build |
+| `npm run build`   | Build for production             |
+| `npm run lint `   | Check errors by lint             |
+
+## Aditional Features
+
+- Use command `/status` into input for checking established connection.
+
+### Contacts
+
+Anyway don't hesitate to contact me, you can find my contacts [here](https://github.com/Vokoloven).
