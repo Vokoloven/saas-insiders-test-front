@@ -29,6 +29,7 @@ export const ChatWrapper = ({ children }) => {
       <Paper
         elevation={0}
         sx={(theme) => ({
+          px: '40px',
           width: '100%',
           height: 'calc(100vh - 98px)',
           borderTopLeftRadius: '40px',
@@ -46,7 +47,6 @@ export const ChatWrapper = ({ children }) => {
           ref={chatContainerRef}
           sx={{
             maxWidth: '1200px',
-            px: '40px',
             pt: '40px',
             zIndex: 1,
             overflowY: 'auto',
