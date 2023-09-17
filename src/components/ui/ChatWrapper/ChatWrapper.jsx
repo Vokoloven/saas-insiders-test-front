@@ -47,7 +47,6 @@ export const ChatWrapper = ({ children }) => {
           sx={{
             maxWidth: '1200px',
             px: '40px',
-            pb: '40px',
             pt: '40px',
             zIndex: 1,
             overflowY: 'auto',

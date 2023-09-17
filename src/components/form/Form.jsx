@@ -16,6 +16,7 @@ export const Form = () => {
       sx={{
         pb: '60px',
         px: '40px',
+        pt: loading ? '35px' : '59px',
         ...(path !== 'chat' && { display: 'none' }),
       }}
     >
